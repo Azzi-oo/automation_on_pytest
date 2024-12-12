@@ -3,9 +3,15 @@ import pytest
 from stuff.accum import Accumulator
 
 
-def test_accumulator_init():
+@pytest.fixture
+def accum():
+    return Accumulator()
+
+
+def test_accumulator_init(accum):
     accum = Accumulator()
     assert accum.count == 0
+
 
 def test_accumulator_add_one():
     accum = Accumulator()
@@ -25,5 +31,5 @@ def test_accumulator_add_twice():
 
 def test_accumulator_cannot_set_count_directly():
     accum = Accumulator()
-    with pytest.raises(AttributeError, match=r"property 'count' of 'Accumulator' object has no setter")
-    accum.count = 10
+    with pytest.raises(AttributeError, match=r"property 'count' of 'Accumulator' object has no setter"):
+        accum.count = 10
