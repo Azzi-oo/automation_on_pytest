@@ -1,8 +1,10 @@
 import pytest
 
 
+@pytest.mark.math
 def test_one():
     assert 1 + 1 == 2
+
 
 def test_one_plus_two():
     a = 1
@@ -19,6 +21,8 @@ products = [
     (2.5, 6.7, 16.75),
 ]
 
+
+@pytest.mark.math
 @pytest.mark.parametrize('a, b, product', products)
 def test_multiplication(a, b, product):
     assert a * b == product
